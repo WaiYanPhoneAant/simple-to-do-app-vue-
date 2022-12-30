@@ -35,22 +35,19 @@
             </div>
           </div>
           <div class="row mt-3" v-for="(task,index) in filterTask"  :key="task">
-                <div class="col-6 text-white " :class="{'text-decoration-line-through':task.done}">{{task.actions+index}}</div>
-                <div class="col-6 text-end" >
-                  <!-- <input class="btn btn-secondary" :class="{'btn-success':task.done==true}"  type="submit" @click="cd(index)" name="" id="" > -->
-                  <button class="btn btn-secondary" :class="{'btn-success':task.done}"  type="submit" @click="cd(index)" name="" :id=index >{{task.done?'finished':'unfinished'}}</button>
+                <div class="col-6 text-white " :class="{'text-decoration-line-through':task.done}">{{task.actions}}</div>
+                <div class="col-6 text-end"  >
+                  <input type="checkbox" @change="cd(index)" name="" id="" v-model="task.done">
                 </div>
           </div>
           <div class="row mt-3 p-3">
-            <!-- <button @click="hide()">
-                  {{hideComplete?'Show complete tasks':'Hide complete taks'}}
-            </button> -->
             <label  class="col-12 btn text-white" :class="hideComplete?'bg-primary':'bg-danger'" for="check">
               {{hideComplete?'Show complete tasks':'Hide complete taks'}}
             </label>
-            <input type="checkbox" name="" v-model="hideComplete" id="check" style="display:none;">
+            <input type="checkbox" name="" v-model="hideComplete" id="check" style="display: none;">
           </div>
       </div>
+
   </div>
 </template>
 
@@ -87,11 +84,8 @@
         }
       },
       cd(index){
-        console.log(index);
-        let task=this.tasks[index];
-        task.done=task.done?false:true;
         this.storeData()
-
+        console.log(index);
       },
       deleteTasks(){
         this.tasks=this.tasks.filter((v)=>!v.done);
@@ -112,3 +106,4 @@
     },
   }
 </script>
+
