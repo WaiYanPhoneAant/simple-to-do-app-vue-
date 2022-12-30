@@ -1,5 +1,9 @@
 # Mini Todo App with Vue.js
 
+## Demo-project link
+
+https://waiyanphoneaant.github.io/simpleToDoforDeploy/
+
 It is a simple CRUD project.
 
 
